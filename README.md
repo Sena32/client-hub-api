@@ -1,7 +1,19 @@
-<h1 align="center">
+<div align="center">
   Client Hub API
-</h1>
 
+RESTful API built with **Django** and **Django REST Framework**, designed for learning and experimentation purposes.  
+It provides authentication and client management endpoints that integrate with the **Client Hub** frontend application.
+
+[![Status](https://img.shields.io/badge/status-active-brightgreen?style=for-the-badge)]()
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
+[![Django](https://img.shields.io/badge/Django-4.0+-092E20?style=for-the-badge&logo=django)]()
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-336791?style=for-the-badge&logo=postgresql&logoColor=white)]()
+[![GitHub](https://img.shields.io/badge/GitHub-Ailton_Sena-000?style=for-the-badge&logo=github)](https://github.com/Sena32)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ailton_Sena-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ailtonsenap/)
+
+</div>
+
+---
 ### 🧠 **Sobre o projeto**
 
 **API RESTful desenvolvida com Django e Django REST Framework**, criada para fins de aprendizado e desafio.
