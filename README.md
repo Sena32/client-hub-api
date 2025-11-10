@@ -1,89 +1,70 @@
 <h1 align="center">
-  Challenge
+  Client Hub API
 </h1>
 
-## 💻 Projeto
-Aplicativo para desafio e estudos.
+### 🧠 **Sobre o projeto**
 
+**API RESTful desenvolvida com Django e Django REST Framework**, criada para fins de aprendizado e desafio.
+Esta API fornece endpoints de autenticação e gerenciamento de clientes que se integram diretamente com o frontend do **Client Hub**.
+
+---
+
+## ⚙️ Endpoints Overview
+
+| Method | Endpoint           | Description |
+|---------|--------------------|-------------|
+| `POST`  | `/token/`          | Obtain JWT access and refresh tokens |
+| `POST`  | `/token/refresh`   | Refresh JWT token |
+| `POST`  | `/token/verify`    | Verify JWT token validity |
+| `POST`  | `/register/`       | Register a new user |
+| `GET`   | `/clients/`        | List all clients |
+| `POST`  | `/clients/`        | Create a new client |
+| `GET`   | `/clients/{id}/`   | Retrieve a specific client |
+| `PUT`   | `/clients/{id}/`   | Update client information |
+| `DELETE`| `/clients/{id}/`   | Delete a client |
+
+---
 
 ## :hammer_and_wrench: Features 
 
--   [ ] Autenticação JWT.
--   [ ] Cadastrar um usuário.
--   [ ] Obtém lista de clientes;
--   [ ] Cadastrar Cliente;
--   [ ] Editar Cliente;
--   [ ] Deletar Cliente;
--   [ ] Detalhar Clientes;
--   [ ] Disponibiliza a função de Logout.
+- [x] JWT Authentication (access, refresh, verify)
+- [x] User registration
+- [x] CRUD operations for clients
+- [x] Django Admin Panel
+- [x] Token-based security
+- [x] CORS enabled for frontend integration
 
+---
 
-## ✨ Tecnologias
+## ✨ Technologies
 
--   [ ] Django
--   [ ] Django-Rest-Framework
--   [ ] Django-Rest-Framework-SimpleJWT
--   [ ] Postgres
+- [x] Django
+- [x] Django REST Framework
+- [x] Django REST Framework SimpleJWT
+- [x] PostgreSQL
+- [x] Django CORS Headers
 
-## Configurando o banco de dados
+---
 
--Instale ou rode um container com postgres com as seguintes credenciais:
+## 🛠️ Database Configuration
 
+configure suas credentials PostgreSQL em `settings.py` ou via environment variables:
 
-```cl
-        'NAMEDB': 'db',
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db',
         'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'PORT': '5432',
+    }
+}
 ```
-
-## Executando o projeto
-
-faça um clone do projeto e logo em seguida inicie um ambiente virtual, tendo o python instalado.
-Em seguida, siga o passo a passo:
-- Rode o comando abaixo, dentro da raiz do projeto -
-
-```cl
-  python3 -m venv env
-```
-
-- Rode o comando abaixo, para ativar o ambiente, dentro da raiz do projeto -
-
-```cl
-  source env/bin/activate #linux
-  env\Scripts\activate #windows
-```
-- Rode os comando abaixo, dentro da raiz do projeto, para instalar as dependências na vm -
-
-```cl
-pip install django
-pip install djangorestframework
-pip install djangorestframework-simplejwt
-pip install psycopg2-binary
-pip install django-cors-headers
-```
-- ou mais simples
-
-```cl
-pip install -r requirements.txp
-```
-- Rode os comando abaixo, para migrar as alterações ao banco -
-
-```cl
-python manage.py migrate 
-python manage.py makemigrations #se necessário, depois rode o comando acima desse
-```
-- Rode a api -
-
-```ts
-    python manage.py runserver 
-```
-
 <br />
-
 <div align="center">
-  <small>Desenvolvido por Ailton de Sena Pinheiro - Agosto/2021</small>
+  <small>Developed by Ailton de Sena Pinheiro - 09/2021</small>
 
   [![GitHub Badge](https://img.shields.io/badge/Ailton_Sena-000?style=for-the-badge&logo=github&logoColor=white&link=https://www.linkedin.com/in/ailtonsenap)](https://github.com/Sena32/)
     [![Linkedin Badge](https://img.shields.io/badge/Ailton_Sena-000?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/ailtonsenap)](https://www.linkedin.com/in/ailtonsenap/) 
