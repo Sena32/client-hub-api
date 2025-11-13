@@ -7,3 +7,4 @@ wheel
 django-allauth==0.43.0
 django-rest-auth
 django-rest-auth[with_social]
+python-decouple

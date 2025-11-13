@@ -2,7 +2,7 @@ from django.db.models import fields
 from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from clients import models
+from core import models
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:

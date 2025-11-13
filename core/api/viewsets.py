@@ -1,8 +1,8 @@
 from django.http.response import Http404
 from rest_framework.response import Response
-from clients import models
+from core import models
 from rest_framework import viewsets
-from clients.api import serializers
+from core.api import serializers
 from rest_framework.permissions import IsAuthenticated
 
 class ClientViewSet(viewsets.ModelViewSet):

@@ -1,4 +1,4 @@
-"""contactList URL Configuration
+"""main URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from clients.api import viewsets as clientviewset
+from core.api import viewsets as coreviewset
 # from users.api import viewsets as userviewset
 from django.contrib import admin
 from django.urls import path, include
@@ -30,7 +30,7 @@ route = routers.DefaultRouter()
 
 # route.register(r'users', userviewset.UserViewSet)
 
-route.register(r'clients', clientviewset.ClientViewSet, basename='Clients')
+route.register(r'clients', coreviewset.ClientViewSet, basename='Clients')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
