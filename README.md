@@ -60,20 +60,113 @@ Esta API fornece endpoints de autenticação e gerenciamento de clientes que se 
 
 ## 🛠️ Database Configuration
 
-configure suas credentials PostgreSQL em `settings.py` ou via environment variables:
+Configure suas credenciais PostgreSQL através do arquivo `.env` (baseado no `.env.sample`):
 
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+```bash
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=db
+DB_USER=postgres
+DB_PASSWORD=root
+DB_HOST=127.0.0.1
+DB_PORT=5432
 ```
+
+---
+
+## 🐳 Executando com Docker Compose
+
+### Pré-requisitos
+
+- Docker instalado
+- Docker Compose instalado
+
+### Configuração Inicial
+
+1. **Clone o repositório:**
+   ```bash
+   git clone <repository-url>
+   cd client-hub-api
+   ```
+
+2. **Configure as variáveis de ambiente:**
+   ```bash
+   cp .env.sample .env
+   ```
+   
+   Edite o arquivo `.env` com suas configurações:
+   ```bash
+   nano .env  # ou use seu editor preferido
+   ```
+
+3. **Execute com Docker Compose:**
+   ```bash
+   # Desenvolvimento
+   docker-compose up -d
+   
+   # Ou para ver os logs em tempo real
+   docker-compose up
+   ```
+
+4. **Execute as migrações (se necessário):**
+   ```bash
+   docker-compose exec web python manage.py migrate
+   ```
+
+5. **Crie um superusuário (opcional):**
+   ```bash
+   docker-compose exec web python manage.py createsuperuser
+   ```
+
+### Comandos Úteis
+
+```bash
+# Parar os containers
+docker-compose down
+
+# Parar e remover volumes (⚠️ apaga dados do banco)
+docker-compose down -v
+
+# Ver logs
+docker-compose logs -f web
+docker-compose logs -f db
+
+# Executar comandos Django
+docker-compose exec web python manage.py <comando>
+
+# Reconstruir as imagens
+docker-compose build --no-cache
+
+# Acessar o shell do container
+docker-compose exec web sh
+```
+
+### Acessar a Aplicação
+
+- **API:** http://localhost:8000
+- **Admin Panel:** http://localhost:8000/admin
+- **PostgreSQL:** localhost:5432
+
+### Produção
+
+Para executar em produção, use o arquivo `docker-compose.prod.yml`:
+
+```bash
+# Configure o arquivo .env.production primeiro
+cp .env.sample .env.production
+# Edite .env.production com valores de produção
+
+# Execute em produção
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+**⚠️ Importante para Produção:**
+- Gere uma nova `SECRET_KEY` segura
+- Configure `DEBUG=False`
+- Configure `ALLOWED_HOSTS` com seu domínio
+- Configure `CORS_ALLOWED_ORIGINS` adequadamente
+- Use senhas fortes para o banco de dados
+- Configure backups regulares do PostgreSQL
+
 <br />
 <div align="center">
   <small>Developed by Ailton de Sena Pinheiro - 09/2021</small>

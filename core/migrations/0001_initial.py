@@ -33,7 +33,8 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('phone', models.CharField(max_length=100)),
                 ('create_at', models.DateField(auto_now_add=True)),
-                ('address', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='clients.address')),
+                # Atualizado de 'clients.Address' para 'core.Address' após renomear o app
+                ('address', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.address')),
             ],
         ),
     ]

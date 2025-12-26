@@ -7,13 +7,15 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('clients', '0001_initial'),
+        # Antes: ('clients', '0001_initial'),
+        # Ajustado para refletir o novo app 'core'
+        ('core', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='client',
             name='address',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='client', to='clients.address'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='client', to='core.address'),
         ),
     ]

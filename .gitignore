@@ -117,6 +117,8 @@ celerybeat.pid
 
 # Environments
 .env
+.env.production
+.env.local
 .venv
 env/
 venv/
@@ -228,3 +230,6 @@ venv.bak/
 # Ignore all local history of files
 .history
 .ionide
+
+/staticfiles
+/media
