@@ -82,10 +82,10 @@ SIMPLE_JWT = {
 
     'ALGORITHM': config('JWT_ALGORITHM', default='HS256'),
     'SIGNING_KEY': SECRET_KEY,
-    'VERIFYING_KEY': config('JWT_VERIFYING_KEY', default=None),
-    'AUDIENCE': config('JWT_AUDIENCE', default=None),
-    'ISSUER': config('JWT_ISSUER', default=None),
-    'JWK_URL': config('JWT_JWK_URL', default=None),
+    'VERIFYING_KEY': None,  # Para HS256, deve ser None
+    'AUDIENCE': None,  # Não usado para HS256
+    'ISSUER': None,  # Não usado para HS256
+    'JWK_URL': None,  # Não usado para HS256
 
     'AUTH_HEADER_TYPES': tuple(config('JWT_AUTH_HEADER_TYPES', default='Bearer', cast=Csv())),
     'AUTH_HEADER_NAME': config('JWT_AUTH_HEADER_NAME', default='HTTP_AUTHORIZATION'),
