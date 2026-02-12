@@ -9,3 +9,4 @@ django-rest-auth
 django-rest-auth[with_social]
 python-decouple
 gunicorn
+drf-spectacular

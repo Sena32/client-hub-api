@@ -21,6 +21,18 @@ Esta API fornece endpoints de autenticação e gerenciamento de clientes que se 
 
 ---
 
+## 📚 Documentação da API (Swagger / OpenAPI)
+
+A documentação é **dinâmica** (gerada a partir do código) e organizada **por módulos**:
+
+| Recurso | URL | Descrição |
+|--------|-----|-----------|
+| **Swagger UI** | `/docs/` | Documentação interativa por módulos (Auth, Clients) |
+
+Cada módulo (Auth, Clients) documenta seus próprios endpoints via `drf-spectacular`; as regras por módulo estão em `core/cursor.md` e `users/cursor.md`.
+
+---
+
 ## ⚙️ Endpoints Overview
 
 | Method | Endpoint           | Description |

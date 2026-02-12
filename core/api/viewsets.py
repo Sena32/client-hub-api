@@ -1,10 +1,21 @@
 from django.http.response import Http404
-from rest_framework.response import Response
-from core import models
+from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import viewsets
-from core.api import serializers
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
+from core import models
+from core.api import serializers
+
+
+@extend_schema_view(
+    list=extend_schema(summary='Listar clientes', tags=['Clients']),
+    create=extend_schema(summary='Criar cliente', tags=['Clients']),
+    retrieve=extend_schema(summary='Detalhar cliente', tags=['Clients']),
+    update=extend_schema(summary='Atualizar cliente', tags=['Clients']),
+    partial_update=extend_schema(summary='Atualizar cliente (parcial)', tags=['Clients']),
+    destroy=extend_schema(summary='Remover cliente', tags=['Clients']),
+)
 class ClientViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = serializers.ClientSerializer

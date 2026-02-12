@@ -13,30 +13,30 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from core.api import viewsets as coreviewset
-# from users.api import viewsets as userviewset
 from django.contrib import admin
 from django.urls import path, include
-
-from rest_framework import routers
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-    TokenVerifyView
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+    SpectacularRedocView,
 )
+from rest_framework import routers
+from core.api import viewsets as coreviewset
 from users.api import viewsets as userviewset
 
 route = routers.DefaultRouter()
-
-# route.register(r'users', userviewset.UserViewSet)
-
 route.register(r'clients', coreviewset.ClientViewSet, basename='Clients')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Documentação OpenAPI (schema dinâmico + UI por módulos)
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('docs/', SpectacularSwaggerView.as_view()),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    # Auth
     path('token/', userviewset.MyObtainTokenPairView.as_view()),
     path('register/', userviewset.RegisterView.as_view()),
-    path('token/refresh', TokenRefreshView.as_view()),
-    path('token/verify', TokenVerifyView.as_view()),
-    path('', include(route.urls))
+    path('token/refresh', userviewset.TokenRefreshViewDoc.as_view()),
+    path('token/verify', userviewset.TokenVerifyViewDoc.as_view()),
+    path('', include(route.urls)),
 ]

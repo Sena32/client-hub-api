@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
     'rest_framework',
+    'drf_spectacular',
     'corsheaders',
     'core',
     'users',
@@ -155,10 +156,27 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-REST_FRAMEWORK ={
+REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# Documentação OpenAPI/Swagger por módulos (desacoplado por tags)
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Client Hub API',
+    'DESCRIPTION': 'API do Client Hub. Documentação organizada por módulos (Auth, Clientes).',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'TAGS': [
+        {'name': 'Auth', 'description': 'Autenticação: login, registro, refresh e verificação de token JWT.'},
+        {'name': 'Clients', 'description': 'CRUD de clientes e endereços.'},
+    ],
+    'TAG_GROUPS': [
+        {'name': 'Módulo Auth', 'tags': ['Auth']},
+        {'name': 'Módulo Core', 'tags': ['Clients']},
+    ],
 }
 
 
